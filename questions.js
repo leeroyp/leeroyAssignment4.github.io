@@ -1,4 +1,5 @@
 const startButton = document.getElementById("start-btn")
+var c = 60
 
 startButton.addEventListener("click", startGame)
 
@@ -101,3 +102,15 @@ var quiz = new Quiz(questions);
 
 // display quiz
 populate();
+
+//Stopwatch
+var myTimer;
+function clock() {
+    myTimer = setInterval(myClock, 1000);
+    function myClock() {
+        document.getElementById("timer").innerHTML = c--;
+        if (c == 0) {
+        clearInterval(myTimer);
+       }
+    }
+}

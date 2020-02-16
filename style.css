@@ -3,6 +3,46 @@ body {
     background-color: #413D3D;
 }
 
+#stopWatch { 
+    width: 280px; 
+    height: auto; 
+    text-align: center; 
+    display: block; 
+    padding: 5px; 
+    margin: left; }
+
+
+section{
+    font-family:  'Work Sans', sans-serif;
+    font-size: 22px;
+    background-color: orangered;
+    color: #f6f6f6;
+    border: 0px;
+    border-radius: 3px;
+    padding: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    
+}
+
+#timer, #fulltime { 
+    width: auto; 
+    height: auto; 
+    padding: 10px; 
+    font-weight: bold; 
+    font-family: sans-serif; 
+    display: block; 
+    border: 1px solid #eee; 
+    text-align: center; 
+    box-shadow: 0 0 5px #ccc; 
+    background: #fbfbf0; 
+    color: #279; 
+    border-bottom:4px solid darkgrey; 
+} 
+
+#fulltime { display:none; font-size:16px; font-weight:bold; } 
+
 .grid {
     width: 600px;
     height: 500px;
