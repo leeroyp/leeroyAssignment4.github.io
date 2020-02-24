@@ -65,8 +65,9 @@ function checkAnswer(){
     //each time there is a correct answer this value increases
     correct++; 
     
-  }else clearInterval(myTimer) && t-5;
-    clockWrong()
+  }else 
+  alert('WRONG!!!,  click okay to continue')
+    t=t-5
   // changes position of which character user is on
   pos++;
   // then the renderQuestion function runs again to go to next question
@@ -103,6 +104,7 @@ function clock() {
 function clockWrong() {
 
   myTimer = setInterval(myClock, 1000);
+  
 
   
 }
