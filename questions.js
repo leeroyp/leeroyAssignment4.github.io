@@ -27,6 +27,7 @@ function renderQuestion(){
   if(pos >= questions.length){
     test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
     get("test_status").innerHTML = "Test completed";
+
     clearInterval(myTimer);
 
     // resets the variable to allow users to restart the test
@@ -64,7 +65,8 @@ function checkAnswer(){
     //each time there is a correct answer this value increases
     correct++; 
     
-  }else clockWrong();
+  }else clearInterval(myTimer) && t-5;
+    clockWrong()
   // changes position of which character user is on
   pos++;
   // then the renderQuestion function runs again to go to next question
@@ -75,7 +77,7 @@ window.addEventListener("load", renderQuestion, false);
 
 //Stopwatch
 
-var t = 60;
+var t = 30;
 var myTimer;
 var myClock= function (){
   t--
@@ -100,7 +102,7 @@ function clock() {
 
 function clockWrong() {
 
-  myTimer = setInterval(myClock,);
+  myTimer = setInterval(myClock, 1000);
 
   
 }
