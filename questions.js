@@ -1,116 +1,106 @@
-const startButton = document.getElementById("start-btn")
-var c = 60
-
-startButton.addEventListener("click", startGame)
-
-
-function Quiz(questions) {
-    this.score = 0;
-    this.questions = questions;
-    this.questionIndex = 0;
-}
-
-Quiz.prototype.getQuestionIndex = function() {
-    return this.questions[this.questionIndex];
-}
-
-Quiz.prototype.choise = function(answer) {
-    if(this.getQuestionIndex().isCorrectAnswer(answer)) {
-        this.score++;
-    }
-
-    this.questionIndex++;
-}
-
-Quiz.prototype.isEnded = function() {
-    return this.questionIndex === this.questions.length;
-}
+const startButton = document.getElementById('Start-btn')
+var funcEl = document.getElementById("func container")
+startButton.addEventListener('click', function(){
+    clock(); 
+    startTimer()   
+});
 
 
-function Question(text, choices, answer) {
-    this.text = text;
-    this.choices = choices;
-    this.answer = answer;
-}
+// pos is position of where the user in the test or which question they're up to
+var pos = 0, test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
 
-Question.prototype.isCorrectAnswer = function(choice) {
-    return this.answer === choice;
-}
-
-
-function populate() {
-    if(quiz.isEnded()) {
-        alert("game over");
-        showScores();
-    }
-    else {
-        // show question
-        var element = document.getElementById("question");
-        element.innerHTML = quiz.getQuestionIndex().text;
-
-        // show options
-        var choices = quiz.getQuestionIndex().choices;
-        for(var i = 0; i < choices.length; i++) {
-            var element = document.getElementById("choice" + i);
-            element.innerHTML = choices[i];
-            choise("btn" + i, choices[i]);
-        }
-
-        showProgress();
-    }
-};
-
-function choise(id, choise) {
-    var button = document.getElementById(id);
-    button.onclick = function() {
-        quiz.choise(choise);
-        populate();
-    }
-};
-
-
-function showProgress() {
-    var currentQuestionNumber = quiz.questionIndex + 1;
-    var element = document.getElementById("progress");
-    element.innerHTML = "Question " + currentQuestionNumber + " of " + quiz.questions.length;
-};
-
-function showScores() {
-    var gameOverHTML = "<h1>Result</h1>";
-    gameOverHTML += "<h2 id='score'> Your scores: " + quiz.score + "</h2>";
-    var element = document.getElementById("quiz");
-    element.innerHTML = gameOverHTML;
-};
-function startGame() {
-	startButton.classList.add("hide");
-	
-}
-// create questions here
 var questions = [
-    new Question("What languages hasn't been covered in the coding bootcamp?", ["JavaScript", "XHTML","CSS", "React"], "React"),
-    new Question("what is Leeroy's last name ?", ["Philips", "Leeroy","Phili", "Ghazi"], "Phili"),
-    new Question("which of the following is used to send content to github?", ["git pull", "git push","git clone", "git init"], "git push"),
-    new Question("Hyper Text Markup Language Stand For?", ["JavaScript", "XHTML","CSS", "HTML"], "HTML"),
-    new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
-    new Question("Which is not a JavaScript Framework?", ["Python Script", "JQuery","Django", "NodeJS"], "Django"),
-    new Question("Which is used for Connect To Database?", ["PHP", "HTML", "JS", "All"], "PHP"),
-    new Question("Webdevtrick.com is about..", ["Web Design", "Graphic Design", "SEO & Development", "All"], "All")
-];
+  ["Which language is used for styling web pages?", "HTML", "JQuery", "CSS", "A"],
+  ["Which is not a JavaScript Framework?", "Python Script", "JQuery","Django",  "B"], 
+  ["Hyper Text Markup Language Stand For?", "XHTML","CSS", "HTML", "C"],
+  ["Which languages hasn't been covered in class yet?", "JavaScript", "HTML", "React", "A"]
+  ];
+ 
+//   We use this functions in order to use get instead of getElement 
+function get(x){
+  return document.getElementById(x);
+}
+function renderQuestion(){
 
-// create quiz
-var quiz = new Quiz(questions);
 
-// display quiz
-populate();
+  test = get("test");
+  if(pos >= questions.length){
+    test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+    get("test_status").innerHTML = "Test completed";
+    clearInterval(myTimer);
+
+    // resets the variable to allow users to restart the test
+    pos = 0;
+    correct = 0;
+    // stops rest of renderQuestion function running when test is completed
+    return false;
+  }
+  
+  get("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+  question = questions[pos][0];
+  chA = questions[pos][1];
+  chB = questions[pos][2];
+  chC = questions[pos][3];
+  test.innerHTML = "<h3>"+question+"</h3>";
+  // the += appends to the data we started on the line above
+  test.innerHTML += "<input type='radio' name='choices' value='A'> "+chA+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='B'> "+chB+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='C'> "+chC+"<br><br>";
+  test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+
+
+// Checking for the answer
+function checkAnswer(){
+  
+  choices = document.getElementsByName("choices");
+  for(var i=0; i<choices.length; i++){
+    if(choices[i].checked){
+      choice = choices[i].value;
+    }
+  }
+  // checks if answer matches the correct choice
+  if(choice == questions[pos][4]){
+    //each time there is a correct answer this value increases
+    correct++; 
+    
+  }else clockWrong();
+  // changes position of which character user is on
+  pos++;
+  // then the renderQuestion function runs again to go to next question
+  renderQuestion();
+}
+window.addEventListener("load", renderQuestion, false);
+
 
 //Stopwatch
+
+var t = 60;
 var myTimer;
+var myClock= function (){
+  t--
+  document.getElementById("timer").innerHTML = t;
+  if (t === 0) {
+  clearInterval(myTimer);
+
+  test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+  get("test_status").innerHTML = "Test completed";
+
+
+  }
+}
 function clock() {
+
+    funcEl.classList.remove('hide')
+    startButton.classList.add('hide')
+
     myTimer = setInterval(myClock, 1000);
-    function myClock() {
-        document.getElementById("timer").innerHTML = c--;
-        if (c == 0) {
-        clearInterval(myTimer);
-       }
-    }
+   
+}
+
+function clockWrong() {
+
+  myTimer = setInterval(myClock,);
+
+  
 }
