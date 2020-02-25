@@ -1,8 +1,17 @@
 const startButton = document.getElementById('Start-btn')
 var funcEl = document.getElementById("func container")
+var scoresEl = document.getElementById("high-scores")
+var initials = document.getElementById("initials")
+
+
 startButton.addEventListener('click', function(){
     clock(); 
-    startTimer()   
+    renderQuestion()   
+});
+
+scoresEl.addEventListener('click', function(){
+    scores()
+     
 });
 
 
@@ -91,7 +100,7 @@ var myClock= function (){
 
 
   }
-}
+};
 function clock() {
 
     funcEl.classList.remove('hide')
@@ -99,12 +108,12 @@ function clock() {
 
     myTimer = setInterval(myClock, 1000);
    
-}
+};
 
-function clockWrong() {
+function scores() {
 
-  myTimer = setInterval(myClock, 1000);
-  
+ 
+  console.log("click,click")
 
   
 }
