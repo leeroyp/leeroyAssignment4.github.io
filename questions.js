@@ -1,8 +1,9 @@
 const startButton = document.getElementById('Start-btn');
 var funcEl = document.getElementById("func container");
 var scoresEl = document.getElementById("high-scores");
+var storageEl = document.getElementById("small-container");
 
-
+ 
 
 startButton.addEventListener('click', function(){
     clock(); 
@@ -38,9 +39,10 @@ function renderQuestion(){
     test.innerHTML = "<h2>Total score =  "+correct*25+"  </h2>";
     get("test_status").innerHTML = "Test completed";
    
-
+    funcEl.classList.add('hide')
+    storageEl.classList.remove('hide');
     clearInterval(myTimer);
-    storage()
+    // storage()
     
 
 
@@ -98,7 +100,9 @@ var myClock= function (){
   document.getElementById("timer").innerHTML = t;
   if (t === 0) {
   clearInterval(myTimer);
-  storage()
+  storageEl.classList.remove('hide')
+  funcEl.classList.add('hide')
+//   storage()
  
 
   test.innerHTML = "<h2>Total scoore is  "+correct*25+"</h2>";
@@ -115,8 +119,45 @@ function scores() {
   console.log("click,click") 
 };
  
-function storage() {
-    var str = "Add score to Hall of Fame";
-    var result = str.link("file:///Users/leeroyphili/Desktop/Assignment4/storage.html");
-    document.getElementById("demo").innerHTML = result;
+// function storage() {
+//     var str = "Add score to Hall of Fame";
+//     var result = str.link("file:///Users/leeroyphili/Desktop/Assignment4/storage.html");
+//     document.getElementById("demo").innerHTML = result;
+//   }
+
+
+
+
+const form = document.querySelector('form')
+const ul = document.querySelector('ul')
+const input = document.getElementById('item')
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
+
+localStorage.setItem('items'+correct, JSON.stringify(itemsArray))
+const data = JSON.parse(localStorage.getItem('items'+correct))
+
+const liMaker = text => {
+  const li = document.createElement('li')
+  li.textContent = text
+  ul.appendChild(li)
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault()
+
+  itemsArray.push(input.value)
+  localStorage.setItem('items'+ correct , JSON.stringify(itemsArray))
+  liMaker(input.value)
+  input.value = ''
+})
+
+data.forEach(item => {
+  liMaker(item)
+})
+
+button.addEventListener('click', function() {
+  localStorage.clear()
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild)
   }
+})
