@@ -1,10 +1,13 @@
-const startButton = document.getElementById('Start-btn')
-var funcEl = document.getElementById("func container")
-var scoresEl = document.getElementById("high-scores")
+const startButton = document.getElementById('Start-btn');
+var funcEl = document.getElementById("func container");
+var scoresEl = document.getElementById("high-scores");
+var initials = document.getElementById("initials");
+
 
 startButton.addEventListener('click', function(){
     clock(); 
     renderQuestion()   
+    
 });
 
 scoresEl.addEventListener('click', function(){
@@ -29,14 +32,15 @@ function get(x){
 }
 function renderQuestion(){
 
-
   test = get("test");
   if(pos >= questions.length){
     test.innerHTML = "<h2>Total score =  "+correct*25+"  </h2>";
     get("test_status").innerHTML = "Test completed";
+    // initials.classList.remove('hide')
 
     clearInterval(myTimer);
-    myFunction()
+    
+
 
     // resets the variable to allow users to restart the test
     pos = 0;
@@ -85,40 +89,42 @@ window.addEventListener("load", renderQuestion, false);
 
 //Stopwatch
 
-var t = 60;
+var t = 10;
 var myTimer;
 var myClock= function (){
   t--
   document.getElementById("timer").innerHTML = t;
   if (t === 0) {
   clearInterval(myTimer);
-
-  test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
-  get("test_status").innerHTML = "Test completed";
-
-  myFunction();
-
 //   initials.classList.remove('hide')
 
+  test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+  get("test_status").innerHTML = "Test completed"
 
-  }
-};
+  }};
 function clock() {
-
     funcEl.classList.remove('hide')
     startButton.classList.add('hide')
-
-    myTimer = setInterval(myClock, 1000);
-   
+    myTimer = setInterval(myClock, 1000);   
 };
 
 function scores() {
-
- 
-  console.log("click,click")
-
-  
+  console.log("click,click") 
 };
+
+
+
+function getFormvalue()
+{
+  var x=document.getElementById("form1");
+  for (var i=0;i<x.length;i++)
+  {
+   if (x.elements[i].value!='Submit')
+    {  
+      console.log(x.elements[i].value);
+     }  
+   }
+}
 
 // var y = document.createElement("INPUT");
 

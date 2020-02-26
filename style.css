@@ -18,9 +18,9 @@ body{
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px; 
- }
+ } */
 
-h1 {
+/* h1 {
     font-family: "sans-serif";
     background-color: #01BBFF;
     font-size: 60px;
@@ -29,7 +29,7 @@ h1 {
     padding: 2px 0px;
     
     
-} */
+}  */
 
 
 
@@ -40,6 +40,7 @@ div#test{
     padding:10px 40px 40px 40px; 
     background-color:#E5FCE3; 
     width:50%;
+    position: fixed;
 }
 
 .start-btn {
@@ -114,8 +115,11 @@ section{
     z-index: -1;
 }
 
+#initials{
+
+    position: fixed;
+}
+
 .hide{
     display: none
 }
-
-
