@@ -1,7 +1,7 @@
 const startButton = document.getElementById('Start-btn');
 var funcEl = document.getElementById("func container");
 var scoresEl = document.getElementById("high-scores");
-var initials = document.getElementById("initials");
+
 
 
 startButton.addEventListener('click', function(){
@@ -12,6 +12,7 @@ startButton.addEventListener('click', function(){
 
 scoresEl.addEventListener('click', function(){
     scores()
+   
      
 });
 
@@ -36,9 +37,10 @@ function renderQuestion(){
   if(pos >= questions.length){
     test.innerHTML = "<h2>Total score =  "+correct*25+"  </h2>";
     get("test_status").innerHTML = "Test completed";
-    initials.classList.remove('hide')
+   
 
     clearInterval(myTimer);
+    storage()
     
 
 
@@ -89,16 +91,17 @@ window.addEventListener("load", renderQuestion, false);
 
 //Stopwatch
 
-var t = 10;
+var t = 30;
 var myTimer;
 var myClock= function (){
   t--
   document.getElementById("timer").innerHTML = t;
   if (t === 0) {
   clearInterval(myTimer);
-  initials.classList.remove('hide')
+  storage()
+ 
 
-  test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
+  test.innerHTML = "<h2>Total scoore is  "+correct*25+"</h2>";
   get("test_status").innerHTML = "Test completed"
 
   }};
@@ -111,54 +114,9 @@ function clock() {
 function scores() {
   console.log("click,click") 
 };
-
-
-
-
-// var y = document.createElement("INPUT");
-
-// function myFunction() {
-//     var x = document.createElement("FORM");
-//     x.setAttribute("id", "myForm");
-//     document.body.appendChild(x);
-  
  
-//     y.setAttribute("type", "text");
-//     y.setAttribute("value", "");
-//     document.getElementById("myForm").appendChild(y);
-
-//   }
-
- 
-//   const ul = document.querySelector('ul')
-//   const input = y
-//   let itemsArray = localStorage.getItem(y) ? JSON.parse(localStorage.getItem(y)) : []
-  
-//   localStorage.setItem(y, JSON.stringify(itemsArray))
-//   const data = JSON.parse(localStorage.getItem(y))
-  
-//   const liMaker = text => {
-//     const li = document.createElement('li')
-//     li.textContent = text
-//     ul.appendChild(li)
-//   }
-  
-
-
-
-//   form.addEventListener('keypress', function (e) {
-//         if (e.key === 'Enter') {
-          
-//             itemsArray.push(input.value)
-//             localStorage.setItem(y, JSON.stringify(itemsArray))
-//             liMaker(input.value)
-//             input.value = ''
-//         }
-   
-  
-   
-// });
-  
-//   data.forEach(item => {
-//     liMaker(item)
-//   })
+function storage() {
+    var str = "Add score to Hall of Fame";
+    var result = str.link("file:///Users/leeroyphili/Desktop/Assignment4/storage.html");
+    document.getElementById("demo").innerHTML = result;
+  }
