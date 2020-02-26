@@ -32,7 +32,7 @@ function renderQuestion(){
 
   test = get("test");
   if(pos >= questions.length){
-    test.innerHTML = "<h2>Total score =  "+correct*25+" <br> Please entre your initials to save your sccore</h2>";
+    test.innerHTML = "<h2>Total score =  "+correct*25+"  </h2>";
     get("test_status").innerHTML = "Test completed";
 
     clearInterval(myTimer);
@@ -120,47 +120,50 @@ function scores() {
   
 };
 
-var y = document.createElement("INPUT");
+// var y = document.createElement("INPUT");
 
-function myFunction() {
-    var x = document.createElement("FORM");
-    x.setAttribute("id", "myForm");
-    document.body.appendChild(x);
+// function myFunction() {
+//     var x = document.createElement("FORM");
+//     x.setAttribute("id", "myForm");
+//     document.body.appendChild(x);
   
  
-    y.setAttribute("type", "text");
-    y.setAttribute("value", "");
-    document.getElementById("myForm").appendChild(y);
+//     y.setAttribute("type", "text");
+//     y.setAttribute("value", "");
+//     document.getElementById("myForm").appendChild(y);
 
-  }
+//   }
 
  
-  const ul = document.querySelector('ul')
-  const input = y
-  let itemsArray = localStorage.getItem(y) ? JSON.parse(localStorage.getItem(y)) : []
+//   const ul = document.querySelector('ul')
+//   const input = y
+//   let itemsArray = localStorage.getItem(y) ? JSON.parse(localStorage.getItem(y)) : []
   
-  localStorage.setItem(y, JSON.stringify(itemsArray))
-  const data = JSON.parse(localStorage.getItem(y))
+//   localStorage.setItem(y, JSON.stringify(itemsArray))
+//   const data = JSON.parse(localStorage.getItem(y))
   
-  const liMaker = text => {
-    const li = document.createElement('li')
-    li.textContent = text
-    ul.appendChild(li)
-  }
+//   const liMaker = text => {
+//     const li = document.createElement('li')
+//     li.textContent = text
+//     ul.appendChild(li)
+//   }
   
-  form.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
+
+
+
+//   form.addEventListener('keypress', function (e) {
+//         if (e.key === 'Enter') {
           
-            itemsArray.push(input.value)
-            localStorage.setItem(y, JSON.stringify(itemsArray))
-            liMaker(input.value)
-            input.value = ''
-        }
+//             itemsArray.push(input.value)
+//             localStorage.setItem(y, JSON.stringify(itemsArray))
+//             liMaker(input.value)
+//             input.value = ''
+//         }
    
   
    
-});
+// });
   
-  data.forEach(item => {
-    liMaker(item)
-  })
+//   data.forEach(item => {
+//     liMaker(item)
+//   })
