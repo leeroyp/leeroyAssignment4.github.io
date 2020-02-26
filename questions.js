@@ -36,7 +36,7 @@ function renderQuestion(){
   if(pos >= questions.length){
     test.innerHTML = "<h2>Total score =  "+correct*25+"  </h2>";
     get("test_status").innerHTML = "Test completed";
-    // initials.classList.remove('hide')
+    initials.classList.remove('hide')
 
     clearInterval(myTimer);
     
@@ -96,7 +96,7 @@ var myClock= function (){
   document.getElementById("timer").innerHTML = t;
   if (t === 0) {
   clearInterval(myTimer);
-//   initials.classList.remove('hide')
+  initials.classList.remove('hide')
 
   test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct</h2>";
   get("test_status").innerHTML = "Test completed"
@@ -114,17 +114,6 @@ function scores() {
 
 
 
-function getFormvalue()
-{
-  var x=document.getElementById("form1");
-  for (var i=0;i<x.length;i++)
-  {
-   if (x.elements[i].value!='Submit')
-    {  
-      console.log(x.elements[i].value);
-     }  
-   }
-}
 
 // var y = document.createElement("INPUT");
 
