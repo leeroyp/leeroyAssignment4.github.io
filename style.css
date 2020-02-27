@@ -1,124 +1,63 @@
+*, *::before, *::after {
+    box-sizing:border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+:root{
+    --hue-neutral: 200;
+    --hue-wrong:0;
+    --hue-correct:145;
+}
+
 body{
-    --hue: var( --hue-neutral);
-    padding: 0;
-    margin: 0;
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: cadetblue;
+    --hue: var(--hue-neutral);
+    background-color: rgb(228, 195, 161);
+}
+  
+nav{
+   
+    padding: 20px;
+    font-size: 20px;
 }
 
-/* .container{
 
-    width: 800px;
-    max-width: 80%;
+.container{
+    width: 50%;
+    margin-left: 260px;
+   
+ } 
+
+ #func-container{
     background-color: white;
-    border-radius: 5px;
     padding: 10px;
-    box-shadow: 0 0 10px 2px; 
- } */
-
-/* h1 {
-    font-family: "sans-serif";
-    background-color: #01BBFF;
-    font-size: 60px;
-    text-align: center;
-    color: #ffffff;
-    padding: 2px 0px;
-    
-    
-}  */
-
-
-
-
-
-div#test{ 
-    border:#5AB029 3px solid; 
-    padding:10px 40px 40px 40px; 
-    background-color:#E5FCE3; 
-    width:50%;
-    position: fixed;
+    box-shadow: 0 0 10px 2px;
+    text-justify: auto;
 }
 
-.start-btn {
-
-    font-size: 1.5rem; 
+#start-btn{
+    margin-bottom: 14px;
+    font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
 }
-
-
-section{
-    font-family:  'Work Sans', sans-serif;
-    font-size: 22px;
-    background-color: rgba(115, 255, 0, 0.452);
-    color: #f6f6f6;
-    border: 0px;
-    border-radius: 3px;
-    padding: 20px;
-    cursor: pointer;
-    margin-top: auto;
-    align-content: right;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    
+.btn:hover {
+    border-color: black;
 }
 
-
-#timer, #fulltime { 
-    width: auto; 
-    height: auto; 
-    padding: 10px; 
-    font-weight: bold; 
-    font-family: sans-serif; 
-    display: block; 
-    border: 1px solid #eee; 
-    text-align: center; 
-    box-shadow: 0 0 5px #ccc; 
-    background: #fbfbf0; 
-    color: #279; 
-    border-bottom:4px solid darkgrey; 
-} 
-
-#fulltime { display:none; font-size:16px; font-weight:bold; } 
-
-#stopWatch { 
-    width: 280px; 
-    height: auto; 
-    text-align: center; 
-    display: block; 
-    padding: 5px; 
-    margin: left; 
-
+#timer-number{
+    color: rgb(105, 3, 37);
 }
 
 #high-scores{
 
-    font-family:  'Work Sans', sans-serif;
-    font-size: 22px;
-    background-color: rgba(115, 255, 0, 0.452);
-    color: #f6f6f6;
-    border: 0px;
-    border-radius: 3px;
-    padding: 20px;
-    cursor: pointer;
-    float: right 50px;
-    position: absolute;
-    top: 10px;
-    right:0;
-    top: 0px;
-    z-index: -1;
-}
+    float: left;
 
-#initials{
 
-    position: fixed;
-}
+
+
+
+
 
 .hide{
     display: none
