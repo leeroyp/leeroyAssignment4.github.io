@@ -2,12 +2,16 @@ const startButton = document.getElementById('Start-btn');
 var funcEl = document.getElementById("func container");
 var scoresEl = document.getElementById("high-scores");
 var storageEl = document.getElementById("small-container");
+var img = document.getElementById("image");
+var playAgain = document.getElementById("Reset");
+
 
  
 
 startButton.addEventListener('click', function(){
     clock(); 
-    renderQuestion()   
+    renderQuestion() 
+    img.classList.add('hide')  
     
 });
 
@@ -15,6 +19,16 @@ scoresEl.addEventListener('click', function(){
     scores()
        
 });
+
+playAgain.addEventListener('click', function(){
+    clock(); 
+    renderQuestion()  
+    storageEl.classList.add('hide') 
+    clearTimeout(mytime)
+    // clearInterval(myTimer) 
+});
+
+
 
 
 // pos is position of where the user in the test or which question they're up to
@@ -38,7 +52,7 @@ function renderQuestion(){
     test.innerHTML = "<h2>Total score =  "+correct*25+"  </h2>";
     get("test_status").innerHTML = "Test completed";
    
-    funcEl.classList.add('hide')
+   
     storageEl.classList.remove('hide');
     clearInterval(myTimer);
     // storage()
@@ -93,7 +107,7 @@ window.addEventListener("load", renderQuestion, false);
 
 //Stopwatch
 
-var t = 30;
+var t = 60;
 var myTimer;
 var myClock= function (){
   t--
@@ -101,7 +115,6 @@ var myClock= function (){
   if (t === 0) {
   clearInterval(myTimer);
   storageEl.classList.remove('hide')
-  funcEl.classList.add('hide')
   
 //   storage()
  
@@ -134,6 +147,8 @@ const ul = document.querySelector('ul')
 const button = document.querySelector('button')
 const input = document.getElementById('item')
 
+
+
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
 
 localStorage.setItem('items', JSON.stringify(itemsArray))
@@ -160,6 +175,7 @@ data.forEach(item => {
 })
 
 button.addEventListener('click', function() {
+    
   localStorage.clear()
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild)
