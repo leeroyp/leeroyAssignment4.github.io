@@ -133,12 +133,6 @@ function scores() {
   console.log("click,click") 
 };
  
-// function storage() {
-//     var str = "Add score to Hall of Fame";
-//     var result = str.link("file:///Users/leeroyphili/Desktop/Assignment4/storage.html");
-//     document.getElementById("demo").innerHTML = result;
-//   }
-
 
 // Storage files 
 
